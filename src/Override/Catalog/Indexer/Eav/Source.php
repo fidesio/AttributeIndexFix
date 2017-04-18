@@ -150,15 +150,19 @@ class Source extends \Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav\So
         $query = $select->query();
         while ($row = $query->fetch()) {
             try {
-                // Load custom source class and its options
-                $source = $objectManager->create($row['source_model']);
-                $sourceModelOptions = $source->getAllOptions();
+                /** @var \Magento\Eav\Model\AttributeRepository  $attributeRepository */
+                $attributeRepository = $objectManager->get('Magento\Eav\Model\AttributeRepository');
+                /** @var \Magento\Catalog\Model\ResourceModel\Eav\Attribute $attribute */
+                $attribute = $attributeRepository->get($row['entity_type_id'], $row['attribute_code']);
+                $sourceModelOptions = $attribute->getOptions();
                 // Add options to list used below
                 foreach ($sourceModelOptions as $o) {
-                    $options[$row['attribute_id']][$o["value"]] = true;
+                    $options[$row['attribute_id']][$o->getValue()] = true;
                 }
             } catch (\BadMethodCallException $e) {
                 // Skip
+            } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
+                // skip
             }
         }
 
