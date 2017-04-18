@@ -14,6 +14,6 @@ After some research and many hours spent, I found that @maderlock has a good fix
 
 Here is how to get this running:
 
-* `composer require swiftotter/attribute-index-fix`
+* `composer require fidesio/attribute-index-fix`
 * `php bin/magento module:enable SwiftOtter_AttributeIndexFix`
 * `php bin/magento cache:clean`
