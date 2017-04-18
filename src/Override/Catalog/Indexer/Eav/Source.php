@@ -144,7 +144,7 @@ class Source extends \Magento\Catalog\Model\ResourceModel\Product\Indexer\Eav\So
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $select = $this->getConnection()->select()->from(
             ['ea' => $this->getTable('eav_attribute')],
-            ['attribute_id','source_model']
+            ['attribute_id','entity_type_id', 'attribute_code']
         )->where('attribute_id IN(?)', $attrIds)
             ->where('source_model is not null');
         $query = $select->query();
