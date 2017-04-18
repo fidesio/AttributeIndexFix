@@ -1,5 +1,5 @@
 {
-  "name": "swiftotter/attribute-index-fix",
+  "name": "fidesio/attribute-index-fix",
   "description": "N/A",
   "require": {
     "php": "~7.0.0",
@@ -7,7 +7,7 @@
     "lib-libxml": "*"
   },
   "type": "magento2-module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": [
     "OSL-3.0",
     "AFL-3.0"
